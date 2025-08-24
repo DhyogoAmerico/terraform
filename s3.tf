@@ -7,11 +7,20 @@ resource "aws_s3_bucket" "bucket-backend" {
   }
 }
 
-# resource "aws_s3_bucket" "bucket-aula" {
-#   bucket = "aula-bucket-dhyogo"
+resource "aws_s3_bucket" "bucket-aula" {
+  bucket = "aula-bucket-${local.name}"
 
-#   tags = {
-#     Name        = "aula-bucket"
-#     Environment = "Development"
-#   }
-# }
+  tags = {
+    Name        = "aula-bucket"
+    Environment = "Development"
+  }
+}
+
+resource "aws_s3_bucket" "bucket-aula-fiap" {
+  bucket = "aula-bucket-${local.name}-${local.school}"
+
+  tags = {
+    Name        = "aula-bucket-${local.school}"
+    Environment = "Development"
+  }
+}
