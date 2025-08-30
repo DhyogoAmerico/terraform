@@ -6,6 +6,11 @@ resource "aws_route_table" "rt_public" {
     cidr_block = aws_vpc.main_fiap.cidr_block
     gateway_id = "local"
   }
+  
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
 }
 
 resource "aws_route_table_association" "rt_association" {
